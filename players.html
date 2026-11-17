@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liverpool FC Fan Hub | Players</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html" class="logo" aria-label="Liverpool FC home">LFC</a>
+      <ul class="nav-links">
+        <li><a href="index.html#news">News</a></li>
+        <li><a href="matches.html">Matches</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="players.html" aria-current="page">Players</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">Players</h1>
+
+    <div class="player-tools">
+      <label for="player-search" class="visually-hidden">Search players by name</label>
+      <input id="player-search" class="search-input" type="search" placeholder="Search players by name">
+
+      <div class="filters" role="group" aria-label="Filter players by position">
+        <button class="filter-btn is-active" type="button" aria-pressed="true" data-position="all">All</button>
+        <button class="filter-btn" type="button" aria-pressed="false" data-position="Goalkeeper">Goalkeepers</button>
+        <button class="filter-btn" type="button" aria-pressed="false" data-position="Defender">Defenders</button>
+        <button class="filter-btn" type="button" aria-pressed="false" data-position="Midfielder">Midfielders</button>
+        <button class="filter-btn" type="button" aria-pressed="false" data-position="Forward">Forwards</button>
+      </div>
+    </div>
+
+    <!-- Status messages: loading, error, empty -->
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+    <ul id="player-grid" class="player-grid" hidden></ul>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Liverpool FC Fan Hub. Fan project, not an official site.</p>
+  </footer>
+<script type="module" src="js/pages/players.js"></script>
+</body>
+</html>
