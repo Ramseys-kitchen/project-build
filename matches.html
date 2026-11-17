@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liverpool FC Fan Hub | Matches</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<script type="module" src="js/pages/matches.js"></script>
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html" class="logo" aria-label="Liverpool FC home">LFC</a>
+      <ul class="nav-links">
+        <li><a href="index.html#news">News</a></li>
+        <li><a href="matches.html" aria-current="page">Matches</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="players.html">Players</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page">
+  <h1 class="page-title">Matches</h1>
+
+  <div class="filters" role="group" aria-label="Filter matches">
+    <button class="filter-btn is-active" type="button" aria-pressed="true" data-filter="all">All</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="home">Home</button>
+    <button class="filter-btn" type="button" aria-pressed="false" data-filter="away">Away</button>
+  </div>
+
+  <!-- Status messages: loading, error, empty -->
+  <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+  <div id="matches-content" class="matches-layout" hidden>
+
+    <div class="matches-main">
+      <section id="featured" class="featured-match" aria-labelledby="featured-title"></section>
+
+      <section aria-labelledby="fixtures-title">
+        <h2 id="fixtures-title" class="results-title">Upcoming fixtures</h2>
+        <ul id="fixture-list" class="fixture-list"></ul>
+      </section>
+    </div>
+
+    <aside class="matches-side" aria-label="Latest results">
+      <div class="side-image">
+        <img src="assets/images/image-1.png" alt="Liverpool player in a red shirt" loading="lazy">
+      </div>
+      <h2 class="results-title">Latest results</h2>
+      <ul id="results-list" class="results-list"></ul>
+    </aside>
+
+  </div>
+</main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Liverpool FC Fan Hub. Fan project, not an official site.</p>
+  </footer>
+
+</body>
+</html>
