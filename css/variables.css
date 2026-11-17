@@ -1,0 +1,28 @@
+:root {
+  /* Colours */
+  --red: #c8102e;
+  --red-dark: #a00d24;
+  --red-deep: #8b0a1e;
+  --white: #ffffff;
+  --black: #111111;
+  --grey: #a8a8a8;
+  --grey-light: #f2f2f2;
+  --pitch-green: #3d7a3a;
+
+  /* Typography */
+  --font-main: "Poppins", "Segoe UI", Arial, sans-serif;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 2rem;
+  --text-xxl: 2.75rem;
+
+  /* Spacing */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Misc */
+  --radius: 8px;
+  --max-width: 1200px;
+}
