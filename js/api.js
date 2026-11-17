@@ -85,3 +85,100 @@ export async function getMatches() {
   writeCache(matches);
   return matches;
 }
+
+// ---------- Players ----------
+const PLAYER_IDS = [
+  "34163551", // Alisson Becker
+  "34146104", // Freddie Woodman
+  "34147021", // Virgil van Dijk
+  "34231160", // Jérémy Jacquet
+  "34200708", // Milos Kerkez
+  "34173797", // Jeremie Frimpong
+  "34193286", // Conor Bradley
+  "34170358", // Ryan Gravenberch
+  "34171965", // Dominik Szoboszlai
+  "34170133", // Alexis Mac Allister
+  "34173012", // Florian Wirtz
+  "34164182", // Cody Gakpo
+  "34163447", // Alexander Isak
+  "34298316", // Rio Ngumoha
+  "34197250", // Bradley Barcola
+  "34164505"  // Federico Chiesa
+];
+
+const PLAYERS_CACHE_KEY = "lfc-players";
+
+async function fetchPlayer(id) {
+  const response = await fetch(API_BASE + "/lookupplayer.php?id=" + id);
+  if (!response.ok) {
+    throw new Error("Player " + id + " failed with status " + response.status);
+  }
+  const data = await response.json();
+  return data.players ? data.players[0] : null;
+}
+
+// Group the API's detailed positions into the four filter groups
+function groupPosition(position) {
+  const p = (position || "").toLowerCase();
+  if (p.includes("goalkeeper")) return "Goalkeeper";
+  if (p.includes("back") || p.includes("defender")) return "Defender";
+  if (p.includes("midfield")) return "Midfielder";
+  return "Forward"; // wingers, forwards, strikers
+}
+
+function normalisePlayer(p) {
+  return {
+    id: p.idPlayer,
+    name: p.strPlayer,
+    number: p.strNumber ? p.strNumber : "-",
+    position: groupPosition(p.strPosition),
+    detailedPosition: p.strPosition,
+    nationality: p.strNationality,
+    image: p.strCutout || p.strThumb || null
+  };
+}
+
+function readPlayersCache() {
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(PLAYERS_CACHE_KEY));
+    if (saved && Date.now() - saved.time < CACHE_MINUTES * 60 * 1000) {
+      return saved.players;
+    }
+  } catch (error) {
+    // no cache available, carry on
+  }
+  return null;
+}
+
+function writePlayersCache(players) {
+  try {
+    sessionStorage.setItem(
+      PLAYERS_CACHE_KEY,
+      JSON.stringify({ time: Date.now(), players: players })
+    );
+  } catch (error) {
+    // storage full or blocked, carry on
+  }
+}
+
+export async function getPlayers() {
+  const cached = readPlayersCache();
+  if (cached) return cached;
+
+  const results = await Promise.allSettled(PLAYER_IDS.map(fetchPlayer));
+  const worked = results.filter(function (r) {
+    return r.status === "fulfilled" && r.value;
+  });
+
+  // If every request failed, tell the page so it can show the error state
+  if (worked.length === 0) {
+    throw new Error("Could not load players from TheSportsDB");
+  }
+
+  const players = worked
+    .map(function (r) { return normalisePlayer(r.value); })
+    .sort(function (a, b) { return a.name.localeCompare(b.name); });
+
+  writePlayersCache(players);
+  return players;
+}

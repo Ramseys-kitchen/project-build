@@ -1,3 +1,4 @@
+import { animateHero, animateNewsCards } from "../animations.js";
 import { getMatches } from "../api.js";
 
 const metaEl = document.getElementById("next-meta");
@@ -35,3 +36,5 @@ async function loadNextMatch() {
 }
 
 loadNextMatch();
+animateHero();
+animateNewsCards();
