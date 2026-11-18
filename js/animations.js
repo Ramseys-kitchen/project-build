@@ -25,9 +25,11 @@ export function animateNewsCards() {
     duration: 0.8,
     ease: "power3.out",
     stagger: 0.2,
+    clearProps: "transform,opacity",
     scrollTrigger: {
       trigger: ".news-grid",
-      start: "top 85%"
+      start: "top 85%",
+      once: true
     }
   });
 }
