@@ -14,8 +14,6 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/pages.css">
 </head>
-
-<script type="module" src="js/pages/matches.js"></script>
 <body>
 
   <header class="site-header">
@@ -31,42 +29,71 @@
   </header>
 
   <main class="page">
-  <h1 class="page-title">Matches</h1>
+    <h1 class="page-title">Matches</h1>
 
-  <div class="filters" role="group" aria-label="Filter matches">
-    <button class="filter-btn is-active" type="button" aria-pressed="true" data-filter="all">All</button>
-    <button class="filter-btn" type="button" aria-pressed="false" data-filter="home">Home</button>
-    <button class="filter-btn" type="button" aria-pressed="false" data-filter="away">Away</button>
-  </div>
-
-  <!-- Status messages: loading, error, empty -->
-  <div id="status" class="status" role="status" aria-live="polite" hidden></div>
-
-  <div id="matches-content" class="matches-layout" hidden>
-
-    <div class="matches-main">
-      <section id="featured" class="featured-match" aria-labelledby="featured-title"></section>
-
-      <section aria-labelledby="fixtures-title">
-        <h2 id="fixtures-title" class="results-title">Upcoming fixtures</h2>
-        <ul id="fixture-list" class="fixture-list"></ul>
-      </section>
+    <div class="filters" role="group" aria-label="Filter matches">
+      <button class="filter-btn is-active" type="button" aria-pressed="true" data-filter="all">All</button>
+      <button class="filter-btn" type="button" aria-pressed="false" data-filter="home">Home</button>
+      <button class="filter-btn" type="button" aria-pressed="false" data-filter="away">Away</button>
     </div>
 
-    <aside class="matches-side" aria-label="Latest results">
-      <div class="side-image">
-        <img src="assets/images/image-1.png" alt="Liverpool player in a red shirt" loading="lazy">
-      </div>
-      <h2 class="results-title">Latest results</h2>
-      <ul id="results-list" class="results-list"></ul>
-    </aside>
+    <!-- Status messages: loading, error, empty -->
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
 
-  </div>
-</main>
+    <div id="matches-content" class="matches-layout" hidden>
+
+      <div class="matches-main">
+        <section id="featured" class="featured-match" aria-labelledby="featured-title"></section>
+
+        <section aria-labelledby="fixtures-title">
+          <h2 id="fixtures-title" class="results-title">Upcoming fixtures</h2>
+          <ul id="fixture-list" class="fixture-list"></ul>
+        </section>
+
+        <!-- Poll -->
+        <section id="poll" class="poll" aria-labelledby="poll-title">
+          <h2 id="poll-title" class="results-title">Player of the Season poll</h2>
+          <p class="poll-question">Who are the three leading contenders for Liverpool’s Player of the Season based on performances so far in the 2026/27 campaign?</p>
+
+          <form id="poll-form" class="poll-form">
+            <fieldset>
+              <legend class="visually-hidden">Choose your Player of the Season contender</legend>
+              <label class="poll-option">
+                <input type="radio" name="potm" value="Alexander Isak">
+                <span>Alexander Isak</span>
+              </label>
+              <label class="poll-option">
+                <input type="radio" name="potm" value="Cody Gakpo">
+                <span>Cody Gakpo</span>
+              </label>
+              <label class="poll-option">
+                <input type="radio" name="potm" value="Alexis Mac Allister">
+                <span>Alexis Mac Allister</span>
+              </label>
+            </fieldset>
+            <button type="submit" class="btn btn-red poll-btn" disabled>Vote</button>
+          </form>
+
+          <div id="poll-results" class="poll-results" hidden></div>
+        </section>
+      </div>
+
+      <aside class="matches-side" aria-label="Latest results">
+        <div class="side-image">
+          <img src="assets/images/image-1.png" alt="Liverpool player in a red shirt" loading="lazy">
+        </div>
+        <h2 class="results-title">Latest results</h2>
+        <ul id="results-list" class="results-list"></ul>
+      </aside>
+
+    </div>
+  </main>
 
   <footer class="site-footer">
     <p>&copy; 2026 Liverpool FC Fan Hub. Fan project, not an official site.</p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script type="module" src="js/pages/matches.js"></script>
 </body>
 </html>

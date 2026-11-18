@@ -1,4 +1,5 @@
 import { getMatches } from "../api.js";
+import { initPoll } from "../poll.js";
 
 const statusEl = document.getElementById("status");
 const contentEl = document.getElementById("matches-content");
@@ -151,3 +152,4 @@ async function init() {
 }
 
 init();
+initPoll();
