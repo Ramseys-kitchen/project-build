@@ -764,3 +764,90 @@
   font-size: 0.8rem;
   color: #666;
 }
+
+
+/* ---------- Mobile fixes ---------- */
+@media (max-width: 800px) {
+
+  /* Hero: stack text and photo */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .hero-content {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero-image {
+    height: 280px;
+  }
+
+  .hero-image img {
+    object-position: top center;
+  }
+
+  /* Matches: one column instead of two */
+  .page {
+    padding: var(--space-md) var(--space-md) var(--space-xl);
+  }
+
+  .matches-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .matches-main,
+  .matches-side {
+    min-width: 0;
+  }
+
+  /* Featured match card */
+  .featured-match {
+    padding: var(--space-md);
+  }
+
+  .crest,
+  .crest-img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .team-name {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .kickoff {
+    font-size: 1.5rem;
+  }
+
+  /* Fixture and result rows */
+  .fixture .row {
+    grid-template-columns: 80px 1fr;
+    padding: var(--space-md);
+  }
+
+  .fixture .row .fixture-comp {
+    grid-column: 1 / -1;
+  }
+
+  .result .row {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+  }
+
+  .side-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Next match band on Home */
+  .next-match {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
