@@ -97,3 +97,37 @@ a:focus-visible {
 .icon-btn:focus-visible {
   background: rgba(255, 255, 255, 0.18);
 }
+
+
+/* ---------- Navbar on small screens ---------- */
+.logo {
+  flex-shrink: 0;
+}
+
+.logo-img {
+  min-width: 32px;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .site-nav {
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .logo-img {
+    height: 36px;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    gap: var(--space-md);
+    overflow-x: auto;
+  }
+
+  .nav-icons {
+    margin-left: auto;
+  }
+}
