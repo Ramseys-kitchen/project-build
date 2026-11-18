@@ -36,12 +36,17 @@
           <path d="M20 20l-3.5-3.5"></path>
         </svg>
       </a>
-      <button type="button" class="icon-btn" aria-label="Notifications">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
-          <path d="M13.7 21a2 2 0 0 1-3.4 0"></path>
-        </svg>
-      </button>
+      <div class="bell-wrap">
+  <button type="button" class="icon-btn" id="bell-btn" aria-label="Notifications" aria-expanded="false" aria-controls="bell-popup">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
+      <path d="M13.7 21a2 2 0 0 1-3.4 0"></path>
+    </svg>
+  </button>
+  <div id="bell-popup" class="bell-popup" role="status" hidden>
+    All quiet at Anfield… for now
+  </div>
+</div>
       <button type="button" class="icon-btn" aria-label="Account">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <circle cx="12" cy="8" r="4"></circle>
@@ -75,8 +80,9 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Liverpool FC Fan Hub. Fan project, not an official site.</p>
+    <p>&copy; 2026 Liverpool FC Fan Hub.</p>
   </footer>
+<script src="js/main.js"></script>
 <script type="module" src="js/pages/players.js"></script>
 </body>
 </html>
