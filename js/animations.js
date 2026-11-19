@@ -8,7 +8,6 @@ export function animateHero() {
 
   tl.from(".hero .tag", { y: 20, opacity: 0, duration: 0.5 })
     .from(".hero h1", { y: 40, opacity: 0, duration: 0.8 }, "-=0.2")
-    .from(".hero-actions .btn", { y: 20, opacity: 0, duration: 0.5, stagger: 0.15 }, "-=0.4")
     .from(".hero-image img", { x: 80, opacity: 0, scale: 1.1, duration: 1 }, 0.2);
 
   return tl;
